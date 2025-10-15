@@ -19,13 +19,15 @@ for animal in animals:
     animal_type = animal.get("characteristics", {}).get("type")
     locations = ", ".join(animal.get("locations", []))
 
-    output += '<li class="cards__item">'
-    output += f"Name: {animal['name']}<br/>\n"
-    output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
-    if animal_type:  # Only print if type exists
-        output += f"Type: {animal_type}\n"
-    output += '</li>'
-
+    output += f'<li class="cards__item">\n'
+    output += f'  <div class="card__title">{name}</div>\n'
+    output += f'  <p class="card__text">\n'
+    output += f'      <strong>Diet:</strong> {diet}<br/>\n'
+    output += f'      <strong>Location:</strong> {locations}<br/>\n'
+    if animal_type:
+        output += f'      <strong>Type:</strong> {animal_type}<br/>\n'
+    output += f'  </p>\n'
+    output += f'</li>\n'
 
 new_html = template_content.replace("__REPLACE_ANIMALS_INFO__", output)
 
